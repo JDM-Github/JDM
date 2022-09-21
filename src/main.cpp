@@ -10,6 +10,7 @@ class WindowGame : public Game
 public:
     WindowGame() : Game("Window", WIDTH, HEIGHT)
     {
+        SP<Rectangle> rect2 = MS<Rectangle>();
         SP<Rectangle> rect = MS<Rectangle>();
         Static::setCenter(*rect, *this);
         rect->limit_control = true;
