@@ -18,11 +18,9 @@ namespace JDM
     extern bool control_camera;
     extern bool enable_log;
     extern bool enable_color;
-
     extern bool show_memory;
 
     typedef __Vector2F Vector2F;
-
     typedef __Game Game;
     typedef __Widget Widget;
     typedef __Image Image;
@@ -55,13 +53,13 @@ namespace JDM
     template <class W>
     using WMap = std::map<std::string, std::shared_ptr<W>>;
     template <class W>
-    using WVec = std::vector<W>;
+    using WVec = std::vector<std::shared_ptr<W>>;
     template <class W>
-    using WList = std::list<W>;
+    using WList = std::list<std::shared_ptr<W>>;
     template <class W>
-    using WDeq = std::deque<W>;
+    using WDeq = std::deque<std::shared_ptr<W>>;
     template <class W, size_t T>
-    using WArr = std::array<W, T>;
+    using WArr = std::array<std::shared_ptr<W>, T>;
 
     extern bool A_key, B_key, C_key;
     extern bool D_key, E_key, F_key;

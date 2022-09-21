@@ -94,6 +94,9 @@ endif
 ifeq (, $(wildcard .vscode/c_cpp_properties.json))
 	@echo F|xcopy $(PROP) ".vscode\\c_cpp_properties.json" /Y > nul
 endif
+ifeq (, $(wildcard .vscode/task.json))
+	@echo F|xcopy $(PROP) ".vscode\\task.json" /Y > nul
+endif
 	@pause
 	@cls
 
