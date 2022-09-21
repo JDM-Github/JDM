@@ -8,7 +8,7 @@ public:
     bool displayFPS = false;
 
 public:
-    __Game(const std::string &title = "Window", const float width = 600, const float height = 600);
+    __Game(const std::string &title = "Window", const Uint16 width = 600, const Uint16 height = 600);
     ~__Game();
     void run();
 

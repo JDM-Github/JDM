@@ -1,0 +1,71 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "JDM Builder",
+			"command": "C:\\mingw32\\bin\\g++.exe",
+			"args": [
+				"-g",
+				"${workspaceFolder}/src/*.cpp",
+				"C:/JDM/JDM/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_extra/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_game/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_widget/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_special/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_widget/canvas/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_widget/widget/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_widget/layout/*.cpp",
+				"-g",
+				"C:/JDM/JDM/c_file/c_widget/behavior/*.cpp",
+				"-I",
+				"${workspaceFolder}/.",
+				"-I",
+				"C:/JDM/JDM",
+				"-I",
+				"C:/JDM/JDM/h_file/h_extra",
+				"-I",
+				"C:/JDM/JDM/h_file/h_game",
+				"-I",
+				"C:/JDM/JDM/h_file/h_special",
+				"-I",
+				"C:/JDM/JDM/h_file/h_widget",
+				"-I",
+				"C:/JDM/JDM/h_file/h_widget/canvas",
+				"-I",
+				"C:/JDM/JDM/h_file/h_widget/layout",
+				"-I",
+				"C:/JDM/JDM/h_file/h_widget/widget",
+				"-I",
+				"C:/JDM/JDM/h_file/h_widget/behavior",
+				"-I",
+				"C:/JDM/include",
+				"-I",
+				"${workspaceFolder}/header",
+				"-LC:/JDM/lib",
+				"-lmingw32",
+				"-lSDL2main",
+				"-lSDL2",
+				"-lSDL2_image",
+				"-lSDL2_ttf",
+				"-o",
+				"${workspaceFolder}/build/jdm.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:\\mingw32\\bin\\g++.exe"
+		}
+	]
+}
