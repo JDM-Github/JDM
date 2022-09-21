@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/JDM/include",
+                "C:/JDM/JDM/h_file/h_special",
+                "C:/JDM/JDM/h_file/h_widget",
+                "C:/JDM/JDM/h_file/h_widget/behavior",
+                "C:/JDM/JDM/h_file/h_widget/canvas",
+                "C:/JDM/JDM/h_file/h_widget/layout",
+                "C:/JDM/JDM/h_file/h_widget/widget",
+                "C:/JDM/JDM/h_file/h_game",
+                "C:/JDM/JDM/h_file/h_extra",
+                "C:/JDM/JDM/h_file/h_helper",
+                "C:/JDM/JDM"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.32.31326/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
