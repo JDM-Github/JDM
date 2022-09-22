@@ -20,6 +20,7 @@ struct Size
 class MoveAnimation : public __Animation
 {
 private:
+    bool Flag = true;
     std::shared_ptr<__Widget> widget;
     Position position;
 
@@ -38,6 +39,7 @@ public:
 class SizeAnimation : public __Animation
 {
 private:
+    bool Flag = true;
     std::shared_ptr<__Widget> widget;
     Size size;
 
@@ -56,6 +58,7 @@ public:
 class ZoomAnimation : public __Animation
 {
 private:
+    bool Flag = true;
     std::shared_ptr<__Widget> widget;
     Size size;
     float __SX;
@@ -78,6 +81,7 @@ public:
 class MoveSizeAnimation : public __Animation
 {
 private:
+    bool Flag = true;
     std::shared_ptr<__Widget> widget;
     Position position;
     Size size;

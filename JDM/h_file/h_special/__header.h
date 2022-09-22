@@ -4,6 +4,7 @@
 #include <typeinfo>
 #include <thread>
 #include <vector>
+#include <unordered_set>
 #include <deque>
 #include <map>
 #include <memory>

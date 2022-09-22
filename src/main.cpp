@@ -17,7 +17,6 @@ public:
         /**
          * All fun stuff will be in here.
          */
-        Position position;
         SP<Rectangle> rect = MS<Rectangle>();
         Static::setCenter(*rect, *this);
 

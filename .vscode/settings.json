@@ -70,7 +70,8 @@
         "xlocmon": "cpp",
         "xloctime": "cpp",
         "typeindex": "cpp",
-        "any": "cpp"
+        "any": "cpp",
+        "unordered_set": "cpp"
     },
     "better-comments.tags": [
         {

@@ -23,6 +23,12 @@
 #define _UNDERLINE "\033[24m"
 #define _INVERSE "\033[27m"
 
+#define MOVEANIMATION 0x100
+#define SIZEANIMATION 0x101
+#define ZOOMANIMATION 0x102
+#define MOVESIZEANIMATION 0x103
+#define RGBAANIMATION 0x110
+
 inline void Log() { std::cout << std::endl; }
 template <typename X, typename... Args>
 inline void Log(const X &x, const Args... args)

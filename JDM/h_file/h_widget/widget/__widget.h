@@ -22,6 +22,7 @@ public:
     void add_widget(std::shared_ptr<__Widget> widg);
     void remove_widget(std::shared_ptr<__Widget> widg);
     std::list<std::shared_ptr<__Widget>> children;
+    std::unordered_set<int> currentAnim;
 
 protected:
     enum TypeLoop
