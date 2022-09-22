@@ -1,4 +1,5 @@
 #include "JDM.h"
+#include "MoveAnimation.h"
 
 // JDM Basic Setup.
 
@@ -11,6 +12,9 @@ class WindowGame : public Game
 public:
     WindowGame() : Game("Window", WIDTH, HEIGHT)
     {
+        SP<Rectangle> rect = MS<Rectangle>(100, 100, 0);
+        this->add_widget(rect);
+        start_animation(MS<MoveAnimation>(rect, 400, 400, 0.5));
     }
 };
 

@@ -4,6 +4,7 @@ BIN = jdm
 FOLDER= build
 
 PROP = C:\JDM\.vscode\c_cpp_properties.json
+TASK = C:\JDM\.vscode\tasks.json
 MAIN = C:\JDM\src\main.cpp
 DL1 = C:\JDM\build\libfreetype-6.dll
 DL2 = C:\JDM\build\libpng16-16.dll
@@ -36,9 +37,10 @@ I7 = -IC:/JDM/JDM/h_file/h_widget/canvas
 I8 = -IC:/JDM/JDM/h_file/h_widget/layout
 I9 = -IC:/JDM/JDM/h_file/h_widget/widget
 I10 = -IC:/JDM/JDM/h_file/h_widget/behavior
-I11 = -IC:/JDM/include
-I12 = -Iheader
-ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12)
+I11 = -IC:/JDM/JDM/h_file/h_widget/animation
+I12 = -IC:/JDM/include
+I13 = -Iheader
+ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12) $(13)
 
 L1 = -LC:/JDM/lib
 
@@ -95,7 +97,7 @@ ifeq (, $(wildcard .vscode/c_cpp_properties.json))
 	@echo F|xcopy $(PROP) ".vscode\\c_cpp_properties.json" /Y > nul
 endif
 ifeq (, $(wildcard .vscode/task.json))
-	@echo F|xcopy $(PROP) ".vscode\\task.json" /Y > nul
+	@echo F|xcopy $(TASK) ".vscode\\tasks.json" /Y > nul
 endif
 	@pause
 	@cls

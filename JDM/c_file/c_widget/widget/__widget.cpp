@@ -34,7 +34,7 @@ void __Widget::add_widget(std::shared_ptr<__Widget> widg)
 
 void __Widget::remove_widget(std::shared_ptr<__Widget> widg)
 {
-    std::list<std::shared_ptr<__Widget>>::iterator position = std::find(this->children.begin(), this->children.end(), widg);
+    auto position = std::find(this->children.begin(), this->children.end(), widg);
     if (position != this->children.end())
     {
         this->children.erase(position);

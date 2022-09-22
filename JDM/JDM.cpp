@@ -24,6 +24,17 @@ namespace JDM
         return result;
     }
 
+    std::list<std::shared_ptr<__Animation>> Animation;
+    void start_animation(std::shared_ptr<__Animation> anim) { Animation.emplace_back(anim); }
+    void remove_animation(std::shared_ptr<__Animation> anim)
+    {
+        auto position = std::find(Animation.begin(), Animation.end(), anim);
+        if (position != Animation.end())
+        {
+            Animation.erase(position);
+        }
+    }
+
     bool A_key = false, B_key = false, C_key = false;
     bool D_key = false, E_key = false, F_key = false;
     bool G_key = false, H_key = false, I_key = false;

@@ -9,6 +9,7 @@
 #include "__circle.h"
 #include "__rectangle.h"
 #include "__line.h"
+#include "__manimation.h"
 /**
  * SDL2 Basic Template.
  */
@@ -60,6 +61,10 @@ namespace JDM
     using WDeq = std::deque<std::shared_ptr<W>>;
     template <class W, size_t T>
     using WArr = std::array<std::shared_ptr<W>, T>;
+
+    extern std::list<std::shared_ptr<__Animation>> Animation;
+    extern void start_animation(std::shared_ptr<__Animation> anim);
+    extern void remove_animation(std::shared_ptr<__Animation> anim);
 
     extern bool A_key, B_key, C_key;
     extern bool D_key, E_key, F_key;

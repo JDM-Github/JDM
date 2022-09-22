@@ -51,6 +51,7 @@ void __Game::run()
             this->__update();
             this->__islayout();
             this->__pollEvent();
+            this->__manageAnimation();
             this->__render();
             __f_time = SDL_GetTicks();
         }
@@ -60,6 +61,13 @@ void __Game::run()
             Log("\n", FG_GREEN, "Window", FG_CLEAR, " is ", FG_RED, "Terminated", FG_CLEAR, ".");
         else
             Log("\nWindow is Terminated.");
+}
+
+void __Game::__manageAnimation()
+{
+    for (auto anim : JDM::Animation)
+        if (anim->_update() == false)
+            JDM::remove_animation(anim);
 }
 
 void __Game::__update()

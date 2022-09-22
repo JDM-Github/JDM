@@ -16,7 +16,6 @@ protected:
     /**
      * Manage Property.
      *  -> Overrideable method, All loopProperty will be in this method.
-     *
      */
     virtual void manageProperty() {}
 
@@ -47,6 +46,8 @@ private:
     bool __mouseL, __mouseR;
 
 private:
+    void __manageAnimation();
+
     void __Keyboard();
     void __initWindow();
     void __initVariable();
