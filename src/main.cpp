@@ -1,5 +1,7 @@
 #include "JDM.h"
-#include "MoveAnimation.h"
+#include "JDMStatic.h"
+#include "JDMMoveAnim.h"
+#include "JDMColorAnim.h"
 
 // JDM Basic Setup.
 
@@ -10,17 +12,24 @@ using namespace JDM;
 class WindowGame : public Game
 {
 public:
-    WindowGame() : Game("Window", WIDTH, HEIGHT)
+    WindowGame() : Game("Window", WIDTH, HEIGHT) { this->initObject(); }
+    void initObject() override
     {
-        SP<Rectangle> rect = MS<Rectangle>(100, 100, 0);
-        this->add_widget(rect);
-        start_animation(MS<MoveAnimation>(rect, 400, 400, 0.5));
+        /**
+         * All fun stuff will be in here.
+         */
+    }
+
+    void manageProperty() override
+    {
+        /**
+         * All JDM Loop Property, will be here.
+         */
     }
 };
 
 int main(int argv, char **argc)
 {
-    SP<WindowGame> game = MS<WindowGame>();
-    game->run();
+    MS<WindowGame>()->run();
     return 0;
 }

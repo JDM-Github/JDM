@@ -47,7 +47,7 @@ namespace JDM
     using SP = std::shared_ptr<T>;
     template <class T, typename... Args>
     std::shared_ptr<T> MS(Args... arguments) { return std::make_shared<T>(arguments...); }
-    extern int randint(const int &first, const int &second);
+    extern int randint(const Uint64 &first, const Uint64 &second);
 
     template <typename P>
     void PropertyBind(property<P> &prop, P &var, funcCallback func) { prop.push_back(std::make_pair(std::make_pair(var, std::ref(var)), func)); }

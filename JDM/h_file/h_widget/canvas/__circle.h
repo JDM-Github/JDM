@@ -1,7 +1,7 @@
 #pragma once
-#include "__widget.h"
+#include "__widgetcolor.h"
 
-class __Circle : public __Widget
+class __Circle : public __WidgetColor
 {
 public:
     float radius;

@@ -1,11 +1,11 @@
 #pragma once
 #include "__drag.h"
+#include "__widgetcolor.h"
 
-class __Label : public __Widget, public __DragBehavior
+class __Label : public __WidgetColor, public __DragBehavior
 {
 public:
     int font_size;
-    Uint8 R_color, G_color, B_color, A_color;
     bool Fwidth, Fheight;
     enum Valign
     {
@@ -34,6 +34,9 @@ public:
     void changeFont(const std::string &font);
     std::string getText() const;
 
+    void __setColor();
+    void __setOpacity();
+
 protected:
     void setRect();
     void _render();
@@ -54,7 +57,5 @@ private:
 
 private:
     void __initVariables();
-    void __setColor();
-    void __setOpacity();
     void __changeLabel();
 };

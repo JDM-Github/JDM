@@ -14,7 +14,7 @@ namespace JDM
 
     Game *root = nullptr;
     SDL_Renderer *renderer = nullptr;
-    int randint(const int &first, const int &second)
+    int randint(const Uint64 &first, const Uint64 &second)
     {
         if (first >= second)
             return second;

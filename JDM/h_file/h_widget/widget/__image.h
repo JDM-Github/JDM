@@ -1,12 +1,12 @@
 #pragma once
 #include "__drag.h"
 #include "__moveable.h"
+#include "__widgetcolor.h"
 
-class __Image : public __Widget, public __DragBehavior, public __MoveAbleBehavior
+class __Image : public __WidgetColor, public __DragBehavior, public __MoveAbleBehavior
 {
 public:
     std::string sourcefile;
-    Uint8 R_color, G_color, B_color, A_color;
 
 public:
     __Image(const std::string &source = "None", const float width = 100.f,
@@ -32,7 +32,7 @@ private:
     SDL_Rect __source;
     SDL_FRect __destination;
 
-private:
+public:
     void __setColor();
     void __setOpacity();
 };

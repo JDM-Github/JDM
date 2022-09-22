@@ -1,11 +1,10 @@
 #pragma once
 #include "__drag.h"
 #include "__moveable.h"
+#include "__widgetcolor.h"
 
-class __Rectangle : public __Widget, public __DragBehavior, public __MoveAbleBehavior
+class __Rectangle : public __WidgetColor, public __DragBehavior, public __MoveAbleBehavior
 {
-public:
-    Uint8 R_color, G_color, B_color, A_color;
 
 public:
     __Rectangle(const float width = 100.f, const float height = 100.f,

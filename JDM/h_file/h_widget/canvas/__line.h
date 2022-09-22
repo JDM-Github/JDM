@@ -1,11 +1,10 @@
 #pragma once
-#include "__widget.h"
+#include "__widgetcolor.h"
 
-class __Line : public __Widget
+class __Line : public __WidgetColor
 {
 public:
     float x2, y2;
-    Uint8 R_color, G_color, B_color, A_color;
 
 public:
     __Line(const float x1 = 0.f, const float y1 = 0.f,
