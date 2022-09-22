@@ -5,7 +5,7 @@ FOLDER= build
 
 PROP = C:\JDM\.vscode\c_cpp_properties.json
 TASK = C:\JDM\.vscode\tasks.json
-MAIN = C:\JDM\src\main.cpp
+MAIN = C:\JDM\src\test.cpp
 DL1 = C:\JDM\build\libfreetype-6.dll
 DL2 = C:\JDM\build\libpng16-16.dll
 DL3 = C:\JDM\build\SDL2_image.dll

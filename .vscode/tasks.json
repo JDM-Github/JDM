@@ -39,6 +39,8 @@
 				"-I",
 				"C:/JDM/JDM/h_file/h_widget/behavior",
 				"-I",
+				"C:/JDM/JDM/h_file/h_widget/animation",
+				"-I",
 				"C:/JDM/include",
 				"-I",
 				"${workspaceFolder}/header",
