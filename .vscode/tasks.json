@@ -17,6 +17,7 @@
 				"C:/JDM/JDM/c_file/c_widget/widget/*.cpp",
 				"C:/JDM/JDM/c_file/c_widget/layout/*.cpp",
 				"C:/JDM/JDM/c_file/c_widget/behavior/*.cpp",
+				"C:/JDM/JDM/c_file/c_widget/animation/*.cpp",
 				"-I",
 				"${workspaceFolder}/.",
 				"-I",

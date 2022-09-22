@@ -10,6 +10,19 @@ private:
     Uint8 __G;
     Uint8 __B;
     Uint8 __A;
+
+    float __SR;
+    float __SG;
+    float __SB;
+    float __SA;
+    float __Radder;
+    float __Gadder;
+    float __Badder;
+    float __Aadder;
+    float __RStopper;
+    float __GStopper;
+    float __BStopper;
+    float __AStopper;
     float __timer;
 
 public:
@@ -32,47 +45,32 @@ public:
         __G = (AddtoG) ? ((widget->G_color + G_color > 255) ? 255 : widget->G_color + G_color) : G_color;
         __B = (AddtoB) ? ((widget->B_color + B_color > 255) ? 255 : widget->B_color + B_color) : B_color;
         __A = (AddtoA) ? ((widget->A_color + A_color > 255) ? 255 : widget->A_color + A_color) : A_color;
+        this->__SR = this->widget->R_color;
+        this->__SG = this->widget->G_color;
+        this->__SB = this->widget->B_color;
+        this->__SA = this->widget->A_color;
+        this->__Radder = (widget->R_color - __R) * (1.0 / (this->__timer * 60));
+        this->__Gadder = (widget->G_color - __G) * (1.0 / (this->__timer * 60));
+        this->__Badder = (widget->B_color - __B) * (1.0 / (this->__timer * 60));
+        this->__Aadder = (widget->A_color - __A) * (1.0 / (this->__timer * 60));
+        this->__RStopper = std::abs(widget->R_color - __R);
+        this->__GStopper = std::abs(widget->G_color - __G);
+        this->__BStopper = std::abs(widget->B_color - __B);
+        this->__AStopper = std::abs(widget->A_color - __A);
     }
-
     bool _update()
     {
-        // Pause Animation is True
-        if (pauseAnimation)
+        if (this->pauseAnimation)
             return true;
-        else if (cancelAnimation)
+        else if (this->cancelAnimation)
             return false;
         else if (this->widget->parent == nullptr)
             return true;
-
-        // Call Start Animation
-        static bool SAnimation = [](RGBAAnimation *animate)
-        {
-            animate->startAnimation();
-            return true;
-        }(this);
-
-        // Set Static Variables
-        static float SR = this->widget->R_color;
-        static float SG = this->widget->G_color;
-        static float SB = this->widget->B_color;
-        static float SA = this->widget->A_color;
-
-        static float Radder = (widget->R_color - __R) * (1.0 / (this->__timer * 60));
-        static float Gadder = (widget->G_color - __G) * (1.0 / (this->__timer * 60));
-        static float Badder = (widget->B_color - __B) * (1.0 / (this->__timer * 60));
-        static float Aadder = (widget->A_color - __A) * (1.0 / (this->__timer * 60));
-
-        static float RStopper = std::abs(widget->R_color - __R);
-        static float GStopper = std::abs(widget->G_color - __G);
-        static float BStopper = std::abs(widget->B_color - __B);
-        static float AStopper = std::abs(widget->A_color - __A);
-
-        // Check if Ended.
-        RStopper -= std::abs(Radder);
-        GStopper -= std::abs(Gadder);
-        BStopper -= std::abs(Badder);
-        AStopper -= std::abs(Aadder);
-        if (RStopper <= 0 && GStopper <= 0 && BStopper <= 0 && Aadder <= 0)
+        __RStopper -= std::abs(__Radder);
+        __GStopper -= std::abs(__Gadder);
+        __BStopper -= std::abs(__Badder);
+        __AStopper -= std::abs(__Aadder);
+        if (__RStopper <= 0 && __GStopper <= 0 && __BStopper <= 0 && __Aadder <= 0)
         {
             this->endAnimation();
             this->widget->R_color = __R;
@@ -83,16 +81,14 @@ public:
             this->widget->__setOpacity();
             return false;
         }
-
-        // Add Every Frame
-        SR -= Radder;
-        SG -= Gadder;
-        SB -= Badder;
-        SA -= Aadder;
-        this->widget->R_color = (Uint8)SR;
-        this->widget->G_color = (Uint8)SG;
-        this->widget->B_color = (Uint8)SB;
-        this->widget->A_color = (Uint8)SA;
+        __SR -= __Radder;
+        __SG -= __Gadder;
+        __SB -= __Badder;
+        __SA -= __Aadder;
+        this->widget->R_color = (Uint8)__SR;
+        this->widget->G_color = (Uint8)__SG;
+        this->widget->B_color = (Uint8)__SB;
+        this->widget->A_color = (Uint8)__SA;
         this->WhileAnimation();
         this->widget->__setColor();
         this->widget->__setOpacity();

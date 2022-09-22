@@ -24,7 +24,8 @@ C7 = $(wildcard C:/JDM/JDM/c_file/c_widget/canvas/*.cpp)
 C8 = $(wildcard C:/JDM/JDM/c_file/c_widget/widget/*.cpp)
 C9 = $(wildcard C:/JDM/JDM/c_file/c_widget/layout/*.cpp)
 C10 = $(wildcard C:/JDM/JDM/c_file/c_widget/behavior/*.cpp)
-ALL_C = $(C1) $(C2) $(C3) $(C4) $(C5) $(C6) $(C7) $(C8) $(C9) $(C10)
+C11 = $(wildcard C:/JDM/JDM/c_file/c_widget/animation/*.cpp)
+ALL_C = $(C1) $(C2) $(C3) $(C4) $(C5) $(C6) $(C7) $(C8) $(C9) $(C10) $(C11)
 
 I1 = -I.
 I1 = -IC:/JDM/JDM

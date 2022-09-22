@@ -1,7 +1,6 @@
 #include "JDM.h"
 #include "JDMStatic.h"
 #include "JDMMoveAnim.h"
-#include "JDMColorAnim.h"
 
 // JDM Basic Setup.
 
@@ -18,6 +17,20 @@ public:
         /**
          * All fun stuff will be in here.
          */
+        Position position;
+        SP<Rectangle> rect = MS<Rectangle>();
+        Static::setCenter(*rect, *this);
+
+        rect->l_m_down_Func = std::bind(
+            [](SP<Rectangle> rect)
+            {
+                if (rect->collide_point(mouseX, mouseY))
+                {
+                    start_animation(MS<MoveSizeAnimation>(rect, 500, 500, 50, 50));
+                }
+            },
+            rect);
+        this->add_widget(rect);
     }
 
     void manageProperty() override
