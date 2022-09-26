@@ -4,7 +4,7 @@ namespace JDM
 {
     bool control_camera = false;
     bool enable_log = true;
-    bool enable_color = true;
+    bool enable_color = false;
     bool show_memory = false;
     float camera_x = 0;
     float camera_y = 0;

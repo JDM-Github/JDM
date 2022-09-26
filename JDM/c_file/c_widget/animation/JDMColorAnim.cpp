@@ -1,14 +1,14 @@
 #include "JDMColorAnim.h"
 
-RGBAAnimation::RGBAAnimation(std::shared_ptr<__WidgetColor> widg,
+RGBAAnimation::RGBAAnimation(std::shared_ptr<__Widget> widg,
                              const Uint8 R_color, const Uint8 G_color,
                              const Uint8 B_color, const Uint8 A_color,
                              const float Rtimer, const float Gtimer,
                              const float Btimer, const float Atimer,
                              const bool AddtoR, const bool AddtoG,
                              const bool AddtoB, const bool AddtoA)
-    : widget(widg), oldR(widg->R_color), oldG(widg->G_color),
-      oldB(widg->B_color), oldA(widg->A_color)
+    : widget(dynamic_cast<__WidgetColor *>(&*widg)), oldR(widget->R_color), oldG(widget->G_color),
+      oldB(widget->B_color), oldA(widget->A_color)
 {
     if (widget->currentAnim.find(RGBAANIMATION) != widget->currentAnim.end())
         this->Flag = false;

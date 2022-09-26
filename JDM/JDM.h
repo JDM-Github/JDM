@@ -43,6 +43,11 @@ namespace JDM
     extern int mouseX;
     extern int mouseY;
 
+    template <typename T>
+    T negative(T &value) { return (value > 0) ? value * -1 : value; }
+    template <typename T>
+    T positive(T &value) { return (value < 0) ? value * -1 : value; }
+
     template <class T>
     using SP = std::shared_ptr<T>;
     template <class T, typename... Args>

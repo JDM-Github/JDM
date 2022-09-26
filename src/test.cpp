@@ -3,7 +3,6 @@
 #include "JDMMoveAnim.h"
 
 // JDM Basic Setup.
-
 constexpr Uint16 WIDTH = 600U;
 constexpr Uint16 HEIGHT = 600U;
 
@@ -14,9 +13,6 @@ public:
     WindowGame() : Game("Window", WIDTH, HEIGHT) { this->initObject(); }
     void initObject() override
     {
-        /**
-         * All fun stuff will be in here.
-         */
     }
     void manageProperty() override
     {

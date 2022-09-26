@@ -4,7 +4,10 @@
 class __WidgetColor : virtual public __Widget
 {
 public:
-    Uint8 R_color, G_color, B_color, A_color;
+    Uint8 R_color = 255,
+          G_color = 255,
+          B_color = 255,
+          A_color = 255;
 
 public:
     virtual void __setColor() {}

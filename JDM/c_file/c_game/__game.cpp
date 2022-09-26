@@ -15,7 +15,12 @@ __Game::~__Game()
     SDL_Quit();
 }
 
-void __Game::__initVariable() { this->__mouseL = this->__mouseR = false; }
+void __Game::__initVariable()
+{
+    this->__mouseL = this->__mouseR = false;
+    this->R_color = this->G_color = this->B_color = 0;
+}
+
 void __Game::__initWindow()
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -109,7 +114,7 @@ void __Game::__pollEvent()
 
 void __Game::__render()
 {
-    SDL_SetRenderDrawColor(JDM::renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(JDM::renderer, this->R_color, this->G_color, this->B_color, this->A_color);
     SDL_RenderClear(JDM::renderer);
     this->_loopEvent(this->get_this(), RENDER);
     SDL_RenderPresent(JDM::renderer);

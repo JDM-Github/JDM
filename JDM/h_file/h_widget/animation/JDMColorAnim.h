@@ -6,7 +6,7 @@ class RGBAAnimation : public __Animation
 {
 private:
     bool Flag = true;
-    std::shared_ptr<__WidgetColor> widget;
+    __WidgetColor *widget;
     Uint8 __R;
     Uint8 __G;
     Uint8 __B;
@@ -32,7 +32,7 @@ public:
     const Uint8 oldA;
 
 public:
-    RGBAAnimation(std::shared_ptr<__WidgetColor> widg,
+    RGBAAnimation(std::shared_ptr<__Widget> widg,
                   const Uint8 R_color, const Uint8 G_color,
                   const Uint8 B_color, const Uint8 A_color,
                   const float Rtimer = 1, const float Gtimer = 1,
