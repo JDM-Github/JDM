@@ -1,5 +1,89 @@
 #include "JDMMoveAnim.h"
 
+XAnimation::XAnimation(std::shared_ptr<__Widget> widg,
+                       const float Xposition, const float Xtimer, const bool AddtoX)
+    : widget(widg), oldX(widg->x)
+{
+    if (widget->currentAnim.find(XANIMATION) != widget->currentAnim.end())
+        this->Flag = false;
+    else
+    {
+        this->widget->currentAnim.insert(XANIMATION);
+        this->position.__SX = this->widget->x;
+        this->position.__EX = (AddtoX) ? this->widget->x + Xposition : Xposition;
+        this->position.__XAdder = (this->widget->x - this->position.__EX) * (1.0 / (Xtimer * 60));
+        this->position.__XStopper = std::abs(this->widget->x - this->position.__EX);
+    }
+}
+
+bool XAnimation::_update()
+{
+    if (this->Flag == false)
+        return false;
+    else if (this->pauseAnimation)
+        return true;
+    else if (this->cancelAnimation)
+        return false;
+    else if (this->widget->parent == nullptr)
+        return true;
+    this->position.__XStopper -= std::abs(this->position.__XAdder);
+    if (this->position.__XStopper <= 0)
+    {
+        this->endAnimation();
+        this->widget->x = this->position.__EX;
+        this->widget->setRect();
+        this->widget->currentAnim.erase(XANIMATION);
+        return false;
+    }
+    this->position.__SX -= this->position.__XAdder;
+    this->widget->x = this->position.__SX;
+    this->WhileAnimation();
+    this->widget->setRect();
+    return true;
+}
+
+YAnimation::YAnimation(std::shared_ptr<__Widget> widg,
+                       const float Yposition, const float Ytimer, const bool AddtoY)
+    : widget(widg), oldY(widg->y)
+{
+    if (widget->currentAnim.find(YANIMATION) != widget->currentAnim.end())
+        this->Flag = false;
+    else
+    {
+        this->widget->currentAnim.insert(YANIMATION);
+        this->position.__SY = this->widget->y;
+        this->position.__EY = (AddtoY) ? this->widget->y + Yposition : Yposition;
+        this->position.__YAdder = (this->widget->y - this->position.__EY) * (1.0 / (Ytimer * 60));
+        this->position.__YStopper = std::abs(this->widget->y - this->position.__EY);
+    }
+}
+
+bool YAnimation::_update()
+{
+    if (this->Flag == false)
+        return false;
+    else if (this->pauseAnimation)
+        return true;
+    else if (this->cancelAnimation)
+        return false;
+    else if (this->widget->parent == nullptr)
+        return true;
+    this->position.__YStopper -= std::abs(this->position.__YAdder);
+    if (this->position.__YStopper <= 0)
+    {
+        this->endAnimation();
+        this->widget->y = this->position.__EY;
+        this->widget->setRect();
+        this->widget->currentAnim.erase(YANIMATION);
+        return false;
+    }
+    this->position.__SY -= this->position.__YAdder;
+    this->widget->y = this->position.__SY;
+    this->WhileAnimation();
+    this->widget->setRect();
+    return true;
+}
+
 MoveAnimation::MoveAnimation(std::shared_ptr<__Widget> widg,
                              const float Xposition, const float Yposition,
                              const float Xtimer, const float Ytimer,
@@ -54,6 +138,92 @@ bool MoveAnimation::_update()
 
     this->widget->x = this->position.__SX;
     this->widget->y = this->position.__SY;
+    this->WhileAnimation();
+    this->widget->setRect();
+    return true;
+}
+
+WidthAnimation::WidthAnimation(std::shared_ptr<__Widget> widg,
+                               const float Width, const float Wtimer,
+                               const bool AddtoWidth)
+    : widget(widg), oldWidth(widg->width)
+{
+    if (widget->currentAnim.find(WANIMATION) != widget->currentAnim.end())
+        this->Flag = false;
+    else
+    {
+        this->widget->currentAnim.insert(WANIMATION);
+        this->size.__SW = this->widget->width;
+        this->size.__EW = (AddtoWidth) ? this->widget->width + Width : Width;
+        this->size.__WAdder = (this->widget->width - this->size.__EW) * (1.0 / (Wtimer * 60));
+        this->size.__WStopper = std::abs(this->widget->width - this->size.__EW);
+    }
+}
+
+bool WidthAnimation::_update()
+{
+    if (this->Flag == false)
+        return false;
+    else if (this->pauseAnimation)
+        return true;
+    else if (this->cancelAnimation)
+        return false;
+    else if (this->widget->parent == nullptr)
+        return true;
+    this->size.__WStopper -= std::abs(this->size.__WAdder);
+    if (this->size.__WStopper <= 0)
+    {
+        this->endAnimation();
+        this->widget->width = this->size.__EW;
+        this->widget->setRect();
+        this->widget->currentAnim.erase(WANIMATION);
+        return false;
+    }
+    this->size.__SW -= this->size.__WAdder;
+    this->widget->width = this->size.__SW;
+    this->WhileAnimation();
+    this->widget->setRect();
+    return true;
+}
+
+HeightAnimation::HeightAnimation(std::shared_ptr<__Widget> widg,
+                                 const float Height, const float Htimer,
+                                 const bool AddtoHeight)
+    : widget(widg), oldHeight(widg->height)
+{
+    if (widget->currentAnim.find(HANIMATION) != widget->currentAnim.end())
+        this->Flag = false;
+    else
+    {
+        this->widget->currentAnim.insert(HANIMATION);
+        this->size.__SH = this->widget->height;
+        this->size.__EH = (AddtoHeight) ? this->widget->height + Height : Height;
+        this->size.__HAdder = (this->widget->height - this->size.__EH) * (1.0 / (Htimer * 60));
+        this->size.__HStopper = std::abs(this->widget->height - this->size.__EH);
+    }
+}
+
+bool HeightAnimation::_update()
+{
+    if (this->Flag == false)
+        return false;
+    else if (this->pauseAnimation)
+        return true;
+    else if (this->cancelAnimation)
+        return false;
+    else if (this->widget->parent == nullptr)
+        return true;
+    this->size.__HStopper -= std::abs(this->size.__HAdder);
+    if (this->size.__HStopper <= 0)
+    {
+        this->endAnimation();
+        this->widget->height = this->size.__EH;
+        this->widget->setRect();
+        this->widget->currentAnim.erase(HANIMATION);
+        return false;
+    }
+    this->size.__SH -= this->size.__HAdder;
+    this->widget->height = this->size.__SH;
     this->WhileAnimation();
     this->widget->setRect();
     return true;

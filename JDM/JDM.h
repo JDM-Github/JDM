@@ -7,8 +7,10 @@
 #include "__stacklayout.h"
 
 #include "__circle.h"
+#include "__ellipse.h"
 #include "__rectangle.h"
 #include "__line.h"
+
 #include "__manimation.h"
 /**
  * SDL2 Basic Template.
@@ -33,6 +35,7 @@ namespace JDM
     typedef __Rectangle Rectangle;
     typedef __Circle Circle;
     typedef __Line Line;
+    typedef __Ellipse Ellipse;
 
     typedef __DragBehavior DragBehavior;
     typedef __MoveAbleBehavior MoveAbleBehavior;

@@ -17,6 +17,40 @@ struct Size
     float __WStopper, __HStopper;
 };
 
+class XAnimation : public __Animation
+{
+private:
+    bool Flag = true;
+    std::shared_ptr<__Widget> widget;
+    Position position;
+
+public:
+    const float oldX;
+
+public:
+    XAnimation(std::shared_ptr<__Widget> widg,
+               const float Xposition, const float Xtimer = 1,
+               const bool AddtoX = false);
+    bool _update();
+};
+
+class YAnimation : public __Animation
+{
+private:
+    bool Flag = true;
+    std::shared_ptr<__Widget> widget;
+    Position position;
+
+public:
+    const float oldY;
+
+public:
+    YAnimation(std::shared_ptr<__Widget> widg,
+               const float Yposition, const float Ytimer = 1,
+               const bool AddtoY = false);
+    bool _update();
+};
+
 class MoveAnimation : public __Animation
 {
 private:
@@ -33,6 +67,40 @@ public:
                   const float Xposition, const float Yposition,
                   const float Xtimer = 1, const float Ytimer = 1,
                   const bool AddtoX = false, const bool AddtoY = false);
+    bool _update();
+};
+
+class WidthAnimation : public __Animation
+{
+private:
+    bool Flag = true;
+    std::shared_ptr<__Widget> widget;
+    Size size;
+
+public:
+    const float oldWidth;
+
+public:
+    WidthAnimation(std::shared_ptr<__Widget> widg,
+                   const float Width, const float Wtimer = 1,
+                   const bool AddtoWidth = false);
+    bool _update();
+};
+
+class HeightAnimation : public __Animation
+{
+private:
+    bool Flag = true;
+    std::shared_ptr<__Widget> widget;
+    Size size;
+
+public:
+    const float oldHeight;
+
+public:
+    HeightAnimation(std::shared_ptr<__Widget> widg,
+                    const float Height, const float Htimer = 1,
+                    const bool AddtoHeight = false);
     bool _update();
 };
 

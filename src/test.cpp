@@ -1,6 +1,8 @@
 #include "JDM.h"
 #include "JDMStatic.h"
-#include "JDMMoveAnim.h"
+#include "JDMCollision.h"
+
+#include <stdbool.h>
 
 // JDM Basic Setup.
 constexpr Uint16 WIDTH = 600U;
@@ -16,9 +18,7 @@ public:
     }
     void manageProperty() override
     {
-        /**
-         * All JDM Loop Property, will be here.
-         */
+        /* All loop Property will be here */
     }
 };
 

@@ -4,13 +4,12 @@
 class __Circle : public __WidgetColor
 {
 public:
-    float radius_x;
-    float radius_y;
+    float radius;
     Uint8 R_color, G_color, B_color, A_color;
 
 public:
-    __Circle(const float radiusX = 50.f, const float radiusY = 50.f,
-             const float x = 50.f, const float y = 50.f,
+    __Circle(const float radiusXY = 50.f,
+             const float x = 0.f, const float y = 0.f,
              const Uint8 r_color = 0xFF, const Uint8 g_color = 0xFF,
              const Uint8 b_color = 0xFF, const Uint8 a_color = 0xFF);
     ~__Circle() {}

@@ -4,23 +4,23 @@ bool Collision::CircleRectCollision(const float circleX, const float circleY,
                                     const float circleRadius, const float rectX, const float rectY,
                                     const float rectWidth, const float rectHeight)
 {
-    float testX = circleX;
-    float testY = circleY;
+    float testX = circleX + circleRadius;
+    float testY = circleY + circleRadius;
 
     // Test RIGHT-LEFT edges
-    if (circleX < rectX)
+    if (circleX + circleRadius < rectX)
         testX = rectX;
-    else if (circleX > rectX + rectWidth)
+    else if (circleX + circleRadius > rectX + rectWidth)
         testX = rectX + rectWidth;
 
     // Test UP-BOTTOM edges
-    if (circleY < rectY)
+    if (circleY + circleRadius < rectY)
         testY = rectY;
-    else if (circleY > rectY + rectHeight)
+    else if (circleY + circleRadius > rectY + rectHeight)
         testY = rectY + rectHeight;
 
-    float distX = circleX - testX;
-    float distY = circleY - testY;
+    float distX = (circleX + circleRadius) - testX;
+    float distY = (circleY + circleRadius) - testY;
 
     // Pythagoream Theorem
     return Collision::pythagoreamTheorem(distX, distY, circleRadius);
@@ -28,16 +28,14 @@ bool Collision::CircleRectCollision(const float circleX, const float circleY,
 
 bool Collision::pythagoreamTheorem(const float X, const float Y, const float Compare)
 {
-    if (((X * X) + (Y * Y)) <= Compare * Compare)
-        return true;
-    return false;
+    return (((X * X) + (Y * Y)) <= Compare * Compare);
 }
 
 bool Collision::CircleCircleCollision(const float circleX1, const float circleY1, const float circleRadius1,
                                       const float circleX2, const float circleY2, const float circleRadius2)
 {
-    float distX = circleX1 - circleX2;
-    float distY = circleY1 - circleY2;
+    float distX = (circleX1 + circleRadius1) - (circleX2 + circleRadius2);
+    float distY = (circleY1 + circleRadius1) - (circleY2 + circleRadius2);
     // Pythagoream Theoream
     return Collision::pythagoreamTheorem(distX, distY, circleRadius1 + circleRadius2);
 }
