@@ -60,6 +60,8 @@ void __Widget::_back_camera()
 
 void __Widget::_update()
 {
+    for (auto [key, value] : behavior)
+        behavior[key]->update(this);
     this->__set_position();
     if (this->camera_related == false)
         this->_back_camera();
@@ -108,4 +110,45 @@ void __Widget::_loopEvent(std::shared_ptr<__Widget> widg, __Widget::TypeLoop typ
         }
         children->_loopEvent(children, type);
     }
+}
+
+void __Widget::_l_m_down()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->left_mouse_down(this);
+    this->l_m_down_Func();
+}
+
+void __Widget::_l_m_motion()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->left_mouse_motion(this);
+    this->l_m_motion_Func();
+}
+
+void __Widget::_l_m_up()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->left_mouse_up(this);
+    this->l_m_up_Func();
+}
+
+void __Widget::_r_m_down()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->right_mouse_down(this);
+    this->r_m_down_Func();
+}
+void __Widget::_r_m_motion()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->right_mouse_motion(this);
+    this->r_m_motion_Func();
+}
+
+void __Widget::_r_m_up()
+{
+    for (auto [key, value] : behavior)
+        behavior[key]->right_mouse_up(this);
+    this->r_m_up_Func();
 }

@@ -3,7 +3,7 @@
 #include "__moveable.h"
 #include "__widgetcolor.h"
 
-class __Image : public __WidgetColor, public __DragBehavior, public __MoveAbleBehavior
+class __Image : public __WidgetColor
 {
 public:
     std::string sourcefile;
@@ -20,12 +20,6 @@ protected:
     void setRect();
     void _render();
     void _update();
-    void _l_m_down();
-    void _l_m_motion();
-    void _l_m_up();
-    void _r_m_down();
-    void _r_m_motion();
-    void _r_m_up();
 
 private:
     SDL_Texture *__texture;

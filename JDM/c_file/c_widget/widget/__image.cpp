@@ -7,6 +7,10 @@ __Image::__Image(const std::string &source, const float width,
                  const Uint8 b_color, const Uint8 a_color)
     : __Widget(width, height, x, y)
 {
+
+    this->behavior["drag"] = std::make_shared<__DragBehavior>();
+    this->behavior["move"] = std::make_shared<__MoveAbleBehavior>();
+
     this->R_color = r_color;
     this->G_color = g_color;
     this->B_color = b_color;
@@ -38,7 +42,6 @@ void __Image::setRect()
 
 void __Image::_update()
 {
-    __MoveAbleBehavior::move_widget(this);
     __Widget::_update();
     this->setRect();
     this->__setColor();
@@ -47,38 +50,3 @@ void __Image::_update()
 
 void __Image::_render() { SDL_RenderCopyF(JDM::renderer, this->__texture, &this->__source, &this->__destination); }
 void __Image::setRandomColor() { __ColorManager::__SetRandomColor(this->R_color, this->G_color, this->A_color); }
-
-void __Image::_l_m_down()
-{
-    __DragBehavior::left_mouse_down(this);
-    this->l_m_down_Func();
-}
-
-void __Image::_l_m_motion()
-{
-    __DragBehavior::left_mouse_motion(this);
-    this->l_m_motion_Func();
-}
-
-void __Image::_l_m_up()
-{
-    __DragBehavior::left_mouse_up();
-    this->l_m_up_Func();
-}
-
-void __Image::_r_m_down()
-{
-    __DragBehavior::right_mouse_down(this);
-    this->r_m_down_Func();
-}
-void __Image::_r_m_motion()
-{
-    __DragBehavior::right_mouse_motion(this);
-    this->r_m_motion_Func();
-}
-
-void __Image::_r_m_up()
-{
-    __DragBehavior::right_mouse_up();
-    this->r_m_up_Func();
-}

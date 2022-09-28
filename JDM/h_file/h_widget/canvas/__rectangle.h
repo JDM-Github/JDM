@@ -3,7 +3,7 @@
 #include "__moveable.h"
 #include "__widgetcolor.h"
 
-class __Rectangle : public __WidgetColor, public __DragBehavior, public __MoveAbleBehavior
+class __Rectangle : public __WidgetColor
 {
 
 public:
@@ -18,12 +18,6 @@ protected:
     void setRect();
     void _update();
     void _render();
-    void _l_m_down();
-    void _l_m_motion();
-    void _l_m_up();
-    void _r_m_down();
-    void _r_m_motion();
-    void _r_m_up();
 
 private:
     SDL_FRect __destination;

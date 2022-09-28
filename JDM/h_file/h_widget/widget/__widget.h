@@ -1,5 +1,6 @@
 #pragma once
 #include "__mwidget.h"
+#include "__behavior.h"
 
 class __Widget : public __MWidget, public std::enable_shared_from_this<__Widget>
 {
@@ -10,7 +11,6 @@ public:
     float size_hint_y;
     float velocity_x;
     float velocity_y;
-    bool camera_related = false;
 
 public:
     virtual void initObject() {}
@@ -22,6 +22,7 @@ public:
     void add_widget(std::shared_ptr<__Widget> widg);
     void remove_widget(std::shared_ptr<__Widget> widg);
     std::list<std::shared_ptr<__Widget>> children;
+    std::unordered_map<std::string, std::shared_ptr<__Behavior>> behavior;
     std::unordered_set<int> currentAnim;
 
 protected:
@@ -44,6 +45,12 @@ protected:
     void _back_camera();
     void _update();
     void _islayout();
+    void _l_m_down();
+    void _l_m_motion();
+    void _l_m_up();
+    void _r_m_down();
+    void _r_m_motion();
+    void _r_m_up();
 
 private:
     float __width, __height, __x, __y;

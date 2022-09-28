@@ -1,6 +1,8 @@
 #include "JDM.h"
 #include "JDMStatic.h"
 #include "JDMCollision.h"
+#include "typeinfo"
+#include "type_traits"
 
 #include <stdbool.h>
 
@@ -15,6 +17,7 @@ public:
     WindowGame() : Game("Window", WIDTH, HEIGHT) { this->initObject(); }
     void initObject() override
     {
+        /* All fun stuff will be here */
     }
     void manageProperty() override
     {

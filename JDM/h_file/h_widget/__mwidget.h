@@ -70,6 +70,7 @@ public:
     funcCallback layout_Func = []() {};
 
     float width, height, x, y;
+    bool camera_related = false;
     bool bind_in_parent = false;
     bool size_in_parent = false;
     bool pos_in_parent = false;

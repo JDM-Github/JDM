@@ -7,6 +7,8 @@ __Label::__Label(const std::string &_text, const float width,
                  const Uint8 b_color, const Uint8 a_color)
     : __text(_text), __Widget(width, height, x, y)
 {
+    this->behavior["drag"] = std::make_shared<__DragBehavior>();
+
     this->__initVariables();
     this->R_color = r_color;
     this->G_color = g_color;
@@ -86,39 +88,3 @@ void __Label::changeFont(const std::string &font)
 std::string __Label::getText() const { return this->__text; }
 void __Label::_render() { SDL_RenderCopyF(JDM::renderer, this->__texture, &this->__source, &this->__destination); }
 void __Label::setRandomColor() { __ColorManager::__SetRandomColor(this->R_color, this->G_color, this->A_color); }
-
-void __Label::_l_m_down()
-{
-    __DragBehavior::left_mouse_down(this);
-    this->l_m_down_Func();
-}
-
-void __Label::_l_m_motion()
-{
-    __DragBehavior::left_mouse_motion(this);
-    this->l_m_motion_Func();
-}
-
-void __Label::_l_m_up()
-{
-    __DragBehavior::left_mouse_up();
-    this->l_m_up_Func();
-}
-
-void __Label::_r_m_down()
-{
-    __DragBehavior::right_mouse_down(this);
-    this->r_m_down_Func();
-}
-
-void __Label::_r_m_motion()
-{
-    __DragBehavior::right_mouse_motion(this);
-    this->r_m_motion_Func();
-}
-
-void __Label::_r_m_up()
-{
-    __DragBehavior::right_mouse_up();
-    this->r_m_up_Func();
-}

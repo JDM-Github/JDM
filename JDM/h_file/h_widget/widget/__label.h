@@ -2,7 +2,7 @@
 #include "__drag.h"
 #include "__widgetcolor.h"
 
-class __Label : public __WidgetColor, public __DragBehavior
+class __Label : public __WidgetColor
 {
 public:
     int font_size;
@@ -41,12 +41,6 @@ protected:
     void setRect();
     void _render();
     void _update();
-    void _l_m_down();
-    void _l_m_motion();
-    void _l_m_up();
-    void _r_m_down();
-    void _r_m_motion();
-    void _r_m_up();
 
 private:
     std::string __font;

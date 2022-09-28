@@ -2,6 +2,8 @@
 #include "__game.h"
 #include "__image.h"
 #include "__label.h"
+#include "__button.h"
+
 #include "__color.h"
 #include "__gridlayout.h"
 #include "__stacklayout.h"
@@ -28,6 +30,7 @@ namespace JDM
     typedef __Widget Widget;
     typedef __Image Image;
     typedef __Label Label;
+    typedef __Button Button;
 
     typedef __GridLayout GridLayout;
     typedef __StackLayout StackLayout;

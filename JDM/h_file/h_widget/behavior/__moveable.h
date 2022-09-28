@@ -1,22 +1,15 @@
 #pragma once
 #include "__widget.h"
+#include "__behavior.h"
 
-/**
- * Widget Behavior:
- *  -> Allow widget to be control with Keys binded into them.
- *
- * How to use?:
- *  -> To use this behavior, you need to override update method
- *  --- and call MoveAbleBehavior::move_widget() method.
- */
-class __MoveAbleBehavior
+class __MoveAbleBehavior : public __Behavior
 {
 public:
     __MoveAbleBehavior();
+    __Widget *limit = nullptr;
     float normal_speed = 4.f;
     float boost_speed = 6.f;
     bool control_widget = false;
-    bool limit_control = false;
     bool &up_key;
     bool &down_key;
     bool &left_key;
@@ -24,5 +17,5 @@ public:
     bool &boost_key;
 
 protected:
-    void move_widget(__Widget *widg);
+    void update(__MWidget *widg);
 };

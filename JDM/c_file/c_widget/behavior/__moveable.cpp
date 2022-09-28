@@ -1,16 +1,10 @@
 #include "JDM.h"
 
-/* Initialize Movement Key. */
 __MoveAbleBehavior::__MoveAbleBehavior()
     : up_key(JDM::W_key), down_key(JDM::S_key), left_key(JDM::A_key),
       right_key(JDM::D_key), boost_key(JDM::space_key) {}
 
-/**
- * @brief Moveable method used to Move Widget.
- *
- * @param Widget*
- */
-void __MoveAbleBehavior::move_widget(__Widget *widg)
+void __MoveAbleBehavior::update(__MWidget *widg)
 {
     if (this->control_widget)
     {
@@ -24,11 +18,11 @@ void __MoveAbleBehavior::move_widget(__Widget *widg)
                 else
                 {
                     widg->y -= adder;
-                    if (this->limit_control)
-                        if (widg->parent->height >= widg->height)
+                    if (this->limit != nullptr)
+                        if (limit->height >= widg->height)
                         {
-                            if (widg->y <= widg->parent->y)
-                                widg->y = widg->parent->y;
+                            if (widg->y <= limit->y)
+                                widg->y = limit->y;
                         }
                         else
                             widg->y += adder;
@@ -39,11 +33,11 @@ void __MoveAbleBehavior::move_widget(__Widget *widg)
                 else
                 {
                     widg->y += adder;
-                    if (this->limit_control)
-                        if (widg->parent->height >= widg->height)
+                    if (this->limit != nullptr)
+                        if (limit->height >= widg->height)
                         {
-                            if (widg->y + widg->height >= widg->parent->y + widg->parent->height)
-                                widg->y = (widg->parent->y + widg->parent->height) - widg->height;
+                            if (widg->y + widg->height >= limit->y + limit->height)
+                                widg->y = (limit->y + limit->height) - widg->height;
                         }
                         else
                             widg->y -= adder;
@@ -54,11 +48,11 @@ void __MoveAbleBehavior::move_widget(__Widget *widg)
                 else
                 {
                     widg->x -= adder;
-                    if (this->limit_control)
-                        if (widg->parent->width >= widg->width)
+                    if (this->limit != nullptr)
+                        if (limit->width >= widg->width)
                         {
-                            if (widg->x <= widg->parent->x)
-                                widg->x = widg->parent->x;
+                            if (widg->x <= limit->x)
+                                widg->x = limit->x;
                         }
                         else
                             widg->x += adder;
@@ -69,11 +63,11 @@ void __MoveAbleBehavior::move_widget(__Widget *widg)
                 else
                 {
                     widg->x += adder;
-                    if (this->limit_control)
-                        if (widg->parent->width >= widg->width)
+                    if (this->limit != nullptr)
+                        if (limit->width >= widg->width)
                         {
-                            if (widg->x + widg->width >= widg->parent->x + widg->parent->width)
-                                widg->x = (widg->parent->x + widg->parent->width) - widg->width;
+                            if (widg->x + widg->width >= limit->x + limit->width)
+                                widg->x = (limit->x + limit->width) - widg->width;
                         }
                         else
                             widg->x -= adder;

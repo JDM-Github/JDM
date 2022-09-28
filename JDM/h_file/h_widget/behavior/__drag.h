@@ -1,19 +1,20 @@
 #pragma once
 #include "__widget.h"
+#include "__behavior.h"
 
-class __DragBehavior
+class __DragBehavior : public __Behavior
 {
 public:
     bool left_grab = false;
     bool right_grab = false;
 
 protected:
-    void left_mouse_down(const __Widget *widg);
-    void left_mouse_motion(__Widget *widg);
-    void left_mouse_up();
-    void right_mouse_down(const __Widget *widg);
-    void right_mouse_motion(__Widget *widg);
-    void right_mouse_up();
+    void left_mouse_down(__MWidget *widg);
+    void left_mouse_motion(__MWidget *widg);
+    void left_mouse_up(__MWidget *widg);
+    void right_mouse_down(__MWidget *widg);
+    void right_mouse_motion(__MWidget *widg);
+    void right_mouse_up(__MWidget *widg);
 
 private:
     bool __left_grabbing = false;
