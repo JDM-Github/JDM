@@ -4,7 +4,7 @@ __Line::__Line(const float x1, const float y1,
                const float x_2, const float y_2,
                const Uint8 r_color, const Uint8 g_color,
                const Uint8 b_color, const Uint8 a_color)
-    : __Widget(width, height, x1, y1)
+    : __WidgetColor(width, height, x1, y1)
 {
     this->x2 = x_2;
     this->y2 = y_2;

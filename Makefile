@@ -41,7 +41,9 @@ I10 = -IC:/JDM/JDM/h_file/h_widget/behavior
 I11 = -IC:/JDM/JDM/h_file/h_widget/animation
 I12 = -IC:/JDM/include
 I13 = -Iheader
-ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12) $(13)
+I14 = -Iheader/Entity
+I15 = -Iheader/Field
+ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12) $(I13) $(I14) $(I15)
 
 L1 = -LC:/JDM/lib
 
@@ -83,9 +85,21 @@ ifeq (, $(wildcard src))
 	@echo                  Creating src...
 	@mkdir src
 endif
+ifeq (, $(wildcard assets))
+	@echo                 Creating assets...
+	@mkdir assets
+endif
 ifeq (, $(wildcard header))
 	@echo                 Creating header...
 	@mkdir header
+endif
+ifeq (, $(wildcard header/Entity))
+	@echo                 Creating header/Entity...
+	@mkdir header\\header
+endif
+ifeq (, $(wildcard header/Field))
+	@echo                 Creating header/Field...
+	@mkdir header\\Field
 endif
 ifeq (, $(wildcard .vscode))
 	@echo                 Creating .vscode...

@@ -56,11 +56,6 @@ namespace JDM
     template <typename T>
     T changeSign(T &value) { return value * -1; }
 
-    template <class First>
-    using DC = dynamic_cast<First *>;
-    template <class First>
-    using SC = static_cast<First>;
-
     template <class T>
     using SP = std::shared_ptr<T>;
     template <class T, typename... Args>

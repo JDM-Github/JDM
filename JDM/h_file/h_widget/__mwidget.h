@@ -81,6 +81,18 @@ public:
     // @param float,float
     constexpr bool collide_point(float x_, float y_) const { return (this->x <= x_ && x_ <= this->x + this->width &&
                                                                      this->y <= y_ && y_ <= this->y + this->height); }
+    constexpr bool collide_widget(const __MWidget &widget) const
+    {
+        if (this->x + this->width < widget.x)
+            return false;
+        if (this->x > widget.x + widget.width)
+            return false;
+        if (this->y + this->height < widget.y)
+            return false;
+        if (this->y > widget.y + widget.height)
+            return false;
+        return true;
+    }
 
     // @return -> Half Width of Widget
     constexpr float get_whalf() const { return this->width / 2; }

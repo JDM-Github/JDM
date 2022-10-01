@@ -5,7 +5,7 @@ __Button::__Button(const float width, const float height,
                    const float x, const float y,
                    const Uint8 r_color, const Uint8 g_color,
                    const Uint8 b_color, const Uint8 a_color)
-    : __Widget(width, height, x, y)
+    : __WidgetColor(width, height, x, y)
 {
     this->behavior["button"] = std::make_shared<ClickableBehavior>();
     this->R_color = r_color;

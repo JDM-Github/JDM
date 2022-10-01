@@ -4,7 +4,7 @@ __Rectangle::__Rectangle(const float width, const float height,
                          const float x, const float y,
                          const Uint8 r_color, const Uint8 g_color,
                          const Uint8 b_color, const Uint8 a_color)
-    : __Widget(width, height, x, y)
+    : __WidgetColor(width, height, x, y)
 {
     this->behavior["drag"] = std::make_shared<__DragBehavior>();
     this->behavior["move"] = std::make_shared<__MoveAbleBehavior>();

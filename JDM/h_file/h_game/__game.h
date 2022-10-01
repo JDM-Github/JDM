@@ -1,15 +1,11 @@
 #pragma once
-#include "__widget.h"
+#include "__widgetcolor.h"
 
-class __Game : public __Widget
+class __Game : public __WidgetColor
 {
 public:
     std::string title;
     bool displayFPS = false;
-    Uint8 R_color = 255,
-          G_color = 255,
-          B_color = 255,
-          A_color = 255;
 
 public:
     __Game(const std::string &title = "Window", const Uint16 width = 600, const Uint16 height = 600);

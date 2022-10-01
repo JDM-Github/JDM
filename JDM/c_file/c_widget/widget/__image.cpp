@@ -5,7 +5,7 @@ __Image::__Image(const std::string &source, const float width,
                  const float height, const float x, const float y,
                  const Uint8 r_color, const Uint8 g_color,
                  const Uint8 b_color, const Uint8 a_color)
-    : __Widget(width, height, x, y)
+    : __WidgetColor(width, height, x, y)
 {
 
     this->behavior["drag"] = std::make_shared<__DragBehavior>();
@@ -48,5 +48,5 @@ void __Image::_update()
     this->__setOpacity();
 }
 
-void __Image::_render() { SDL_RenderCopyF(JDM::renderer, this->__texture, &this->__source, &this->__destination); }
+void __Image::_render() { SDL_RenderCopyExF(JDM::renderer, this->__texture, &this->__source, &this->__destination, this->angle, this->point, this->flip); }
 void __Image::setRandomColor() { __ColorManager::__SetRandomColor(this->R_color, this->G_color, this->A_color); }

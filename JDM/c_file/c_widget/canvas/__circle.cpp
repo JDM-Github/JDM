@@ -4,7 +4,7 @@
 __Circle::__Circle(const float radiusXY, const float x, const float y,
                    const Uint8 r_color, const Uint8 g_color,
                    const Uint8 b_color, const Uint8 a_color)
-    : __Widget(width, height, x, y)
+    : __WidgetColor(width, height, x, y)
 {
     this->radius = radiusXY;
     this->R_color = r_color;

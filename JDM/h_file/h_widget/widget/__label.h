@@ -22,6 +22,10 @@ public:
     Valign valign = VCENTER;
     Halign halign = HCENTER;
 
+    double angle = 0;
+    SDL_FPoint *point = nullptr;
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+
 public:
     __Label(const std::string &_text = "", const float width = 100.f,
             const float height = 100.f, const float x = 0.f, const float y = 0.f,

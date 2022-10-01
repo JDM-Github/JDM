@@ -5,7 +5,7 @@ __Label::__Label(const std::string &_text, const float width,
                  const float height, const float x, const float y,
                  const Uint8 r_color, const Uint8 g_color,
                  const Uint8 b_color, const Uint8 a_color)
-    : __text(_text), __Widget(width, height, x, y)
+    : __text(_text), __WidgetColor(width, height, x, y)
 {
     this->behavior["drag"] = std::make_shared<__DragBehavior>();
 
@@ -86,5 +86,5 @@ void __Label::changeFont(const std::string &font)
 }
 
 std::string __Label::getText() const { return this->__text; }
-void __Label::_render() { SDL_RenderCopyF(JDM::renderer, this->__texture, &this->__source, &this->__destination); }
+void __Label::_render() { SDL_RenderCopyExF(JDM::renderer, this->__texture, &this->__source, &this->__destination, this->angle, this->point, this->flip); }
 void __Label::setRandomColor() { __ColorManager::__SetRandomColor(this->R_color, this->G_color, this->A_color); }

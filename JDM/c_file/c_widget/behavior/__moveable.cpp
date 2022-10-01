@@ -14,7 +14,17 @@ void __MoveAbleBehavior::update(__MWidget *widg)
             float adder = (this->boost_key) ? this->boost_speed : this->normal_speed;
             if (this->up_key && this->down_key == false)
                 if (JDM::control_camera)
+                {
                     JDM::camera_y += adder;
+                    if (this->limit != nullptr)
+                        if (limit->height >= widg->height)
+                        {
+                            if (widg->y - adder <= limit->y)
+                                JDM::camera_y -= limit->y - (widg->y - adder);
+                        }
+                        else
+                            JDM::camera_y -= adder;
+                }
                 else
                 {
                     widg->y -= adder;
@@ -29,7 +39,17 @@ void __MoveAbleBehavior::update(__MWidget *widg)
                 }
             else if (this->down_key && this->up_key == false)
                 if (JDM::control_camera)
+                {
                     JDM::camera_y -= adder;
+                    if (this->limit != nullptr)
+                        if (limit->height >= widg->height)
+                        {
+                            if ((widg->y + widg->height) + adder >= limit->y + limit->height)
+                                JDM::camera_y += ((widg->y + widg->height) + adder) - (limit->y + limit->height);
+                        }
+                        else
+                            JDM::camera_y += adder;
+                }
                 else
                 {
                     widg->y += adder;
@@ -44,7 +64,17 @@ void __MoveAbleBehavior::update(__MWidget *widg)
                 }
             if (this->left_key && this->right_key == false)
                 if (JDM::control_camera)
+                {
                     JDM::camera_x += adder;
+                    if (this->limit != nullptr)
+                        if (limit->width >= widg->width)
+                        {
+                            if (widg->x - adder <= limit->x)
+                                JDM::camera_x -= limit->x - (widg->x - adder);
+                        }
+                        else
+                            JDM::camera_x -= adder;
+                }
                 else
                 {
                     widg->x -= adder;
@@ -59,7 +89,17 @@ void __MoveAbleBehavior::update(__MWidget *widg)
                 }
             else if (this->right_key && this->left_key == false)
                 if (JDM::control_camera)
+                {
                     JDM::camera_x -= adder;
+                    if (this->limit != nullptr)
+                        if (limit->width >= widg->width)
+                        {
+                            if ((widg->x + widg->width) + adder >= limit->x + limit->width)
+                                JDM::camera_x += ((widg->x + widg->width) + adder) - (limit->x + limit->width);
+                        }
+                        else
+                            JDM::camera_x += adder;
+                }
                 else
                 {
                     widg->x += adder;

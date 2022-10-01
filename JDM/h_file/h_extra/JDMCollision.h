@@ -21,7 +21,5 @@ public:
     static bool LineRectCollision(const float lx1, const float ly1, const float lx2, const float ly2,
                                   const float rectX, const float rectY, const float rectWidth, const float rectHeight);
 
-    static bool pythagoreamTheorem(const float X, const float Y, const float Distance);
-
 private:
 };

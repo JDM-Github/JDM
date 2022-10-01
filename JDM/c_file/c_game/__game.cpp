@@ -1,6 +1,6 @@
 #include "JDM.h"
 
-__Game::__Game(const std::string &title, const Uint16 width, const Uint16 height) : __Widget(width, height)
+__Game::__Game(const std::string &title, const Uint16 width, const Uint16 height) : __WidgetColor(width, height)
 {
     JDM::root = this;
     this->title = title;

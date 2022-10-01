@@ -1,4 +1,5 @@
 #include "JDMCollision.h"
+#include "JDMAlgorithm.h"
 
 bool Collision::CircleRectCollision(const float circleX, const float circleY,
                                     const float circleRadius, const float rectX, const float rectY,
@@ -23,12 +24,7 @@ bool Collision::CircleRectCollision(const float circleX, const float circleY,
     float distY = (circleY + circleRadius) - testY;
 
     // Pythagoream Theorem
-    return Collision::pythagoreamTheorem(distX, distY, circleRadius);
-}
-
-bool Collision::pythagoreamTheorem(const float X, const float Y, const float Compare)
-{
-    return (((X * X) + (Y * Y)) <= Compare * Compare);
+    return Algorithm::pythagoreamTheorem(distX, distY, circleRadius);
 }
 
 bool Collision::CircleCircleCollision(const float circleX1, const float circleY1, const float circleRadius1,
@@ -37,7 +33,7 @@ bool Collision::CircleCircleCollision(const float circleX1, const float circleY1
     float distX = (circleX1 + circleRadius1) - (circleX2 + circleRadius2);
     float distY = (circleY1 + circleRadius1) - (circleY2 + circleRadius2);
     // Pythagoream Theoream
-    return Collision::pythagoreamTheorem(distX, distY, circleRadius1 + circleRadius2);
+    return Algorithm::pythagoreamTheorem(distX, distY, circleRadius1 + circleRadius2);
 }
 
 bool Collision::RectRectCollision(const float rectX1, const float rectY1,

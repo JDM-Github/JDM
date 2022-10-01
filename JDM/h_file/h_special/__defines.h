@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <functional>
 #include <fstream>
 #include <ctime>
 #include <list>
 #include <utility>
+#include <cmath>
 
 #define FG_BLACK "\033[30m"
 #define FG_RED "\033[31m"
@@ -22,6 +24,8 @@
 #define _BOLD "\033[21m"
 #define _UNDERLINE "\033[24m"
 #define _INVERSE "\033[27m"
+
+#define PI 3.14159265358979323846
 
 #define XANIMATION 0x80
 #define YANIMATION 0x81

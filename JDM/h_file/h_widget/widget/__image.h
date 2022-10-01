@@ -8,6 +8,10 @@ class __Image : public __WidgetColor
 public:
     std::string sourcefile;
 
+    double angle = 0;
+    SDL_FPoint *point = nullptr;
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+
 public:
     __Image(const std::string &source = "None", const float width = 100.f,
             const float height = 100.f, const float x = 0.f, const float y = 0.f,
