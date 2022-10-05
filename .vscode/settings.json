@@ -73,7 +73,8 @@
         "any": "cpp",
         "unordered_set": "cpp",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "random": "cpp"
     },
     "better-comments.tags": [
         {

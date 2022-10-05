@@ -4,6 +4,7 @@
 #include <sstream>
 #include <functional>
 #include <fstream>
+#include <random>
 #include <ctime>
 #include <list>
 #include <utility>
@@ -31,6 +32,12 @@
 #define YANIMATION 0x81
 #define WANIMATION 0x82
 #define HANIMATION 0x83
+
+#define RED_CANIMATION 0x84
+#define GREEN_CANIMATION 0x85
+#define BLUE_CANIMATION 0x86
+#define ALPHA_CANIMATION 0x87
+
 #define MOVEANIMATION 0x100
 #define SIZEANIMATION 0x101
 #define ZOOMANIMATION 0x102

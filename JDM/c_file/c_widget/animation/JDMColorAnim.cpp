@@ -1,86 +1,63 @@
 #include "JDMColorAnim.h"
+#include "JDMAnimate.h"
 
 RGBAAnimation::RGBAAnimation(std::shared_ptr<__Widget> widg,
                              const Uint8 R_color, const Uint8 G_color,
                              const Uint8 B_color, const Uint8 A_color,
                              const float Rtimer, const float Gtimer,
-                             const float Btimer, const float Atimer,
-                             const bool AddtoR, const bool AddtoG,
-                             const bool AddtoB, const bool AddtoA)
-    : widget(dynamic_cast<__WidgetColor *>(&*widg)), oldR(widget->R_color), oldG(widget->G_color),
+                             const float Btimer, const float Atimer)
+
+    : widget(dynamic_cast<__WidgetColor *>(&*widg)),
+      oldR(widget->R_color), oldG(widget->G_color),
       oldB(widget->B_color), oldA(widget->A_color)
 {
-    if (widget->currentAnim.find(RGBAANIMATION) != widget->currentAnim.end())
-        this->Flag = false;
-    else
-    {
-        __R = (AddtoR) ? ((widget->R_color + R_color > 255) ? 255 : widget->R_color + R_color) : R_color;
-        __G = (AddtoG) ? ((widget->G_color + G_color > 255) ? 255 : widget->G_color + G_color) : G_color;
-        __B = (AddtoB) ? ((widget->B_color + B_color > 255) ? 255 : widget->B_color + B_color) : B_color;
-        __A = (AddtoA) ? ((widget->A_color + A_color > 255) ? 255 : widget->A_color + A_color) : A_color;
-        this->__SR = this->widget->R_color;
-        this->__SG = this->widget->G_color;
-        this->__SB = this->widget->B_color;
-        this->__SA = this->widget->A_color;
-        this->__Radder = (widget->R_color - __R) * (1.0 / (Rtimer * 60));
-        this->__Gadder = (widget->G_color - __G) * (1.0 / (Gtimer * 60));
-        this->__Badder = (widget->B_color - __B) * (1.0 / (Btimer * 60));
-        this->__Aadder = (widget->A_color - __A) * (1.0 / (Atimer * 60));
-        this->__RStopper = std::abs(widget->R_color - __R);
-        this->__GStopper = std::abs(widget->G_color - __G);
-        this->__BStopper = std::abs(widget->B_color - __B);
-        this->__AStopper = std::abs(widget->A_color - __A);
-    }
+    target[0] = &widget->R_color;
+    target[1] = &widget->G_color;
+    target[2] = &widget->B_color;
+    target[3] = &widget->A_color;
+    JDMAnimate::initVariables(widget, flag, RGBAANIMATION, target,
+                              adder, start, stopper, end,
+                              {R_color, G_color, B_color, A_color},
+                              {Rtimer, Gtimer, Btimer, Atimer});
 }
 
 bool RGBAAnimation::_update()
 {
-    if (this->Flag == false)
-        return false;
-    else if (this->pauseAnimation)
-        return true;
-    else if (this->cancelAnimation)
-        return false;
-    else if (this->widget->parent == nullptr)
-        return true;
-    __RStopper -= std::abs(__Radder);
-    __GStopper -= std::abs(__Gadder);
-    __BStopper -= std::abs(__Badder);
-    __AStopper -= std::abs(__Aadder);
-    if (__RStopper <= 0 && __GStopper <= 0 && __BStopper <= 0 && __Aadder <= 0)
-    {
-        this->endAnimation();
-        this->widget->R_color = __R;
-        this->widget->G_color = __G;
-        this->widget->B_color = __B;
-        this->widget->A_color = __A;
-        this->widget->__setColor();
-        this->widget->__setOpacity();
-        this->widget->currentAnim.erase(RGBAANIMATION);
-        return false;
-    }
-    if (!(__RStopper <= 0))
-        __SR -= __Radder;
-    else
-        __SR = __R;
-    if (!(__GStopper <= 0))
-        __SG -= __Gadder;
-    else
-        __SG = __G;
-    if (!(__BStopper <= 0))
-        __SB -= __Badder;
-    else
-        __SB = __B;
-    if (!(__AStopper <= 0))
-        __SA -= __Aadder;
-    else
-        __SA = __A;
-    this->widget->R_color = (Uint8)__SR;
-    this->widget->G_color = (Uint8)__SG;
-    this->widget->B_color = (Uint8)__SB;
-    this->widget->A_color = (Uint8)__SA;
-    this->WhileAnimation();
-    this->widget->__setColor();
-    this->widget->__setOpacity();
-    return true;
+    return JDMAnimate::setAnimate(
+        adder, stopper, start, end, widget, this, target, RGBAANIMATION,
+        std::bind(
+            [](__WidgetColor &widget)
+            {
+                widget.__setColor();
+                widget.__setOpacity();
+            },
+            *widget));
+}
+
+RAnimation::RAnimation(std::shared_ptr<__Widget> widg, const Uint8 R_color, const float timer)
+    : __ColorAnimation(widg, R_color, RED_CANIMATION), oldR(widget->R_color)
+{
+    target = &widget->R_color;
+    JDMAnimate::initVariable(widget, flag, TFLAG, target, adder, start, stopper, end, timer);
+}
+
+GAnimation::GAnimation(std::shared_ptr<__Widget> widg, const Uint8 G_color, const float timer)
+    : __ColorAnimation(widg, G_color, GREEN_CANIMATION), oldG(widget->G_color)
+{
+    target = &widget->G_color;
+    JDMAnimate::initVariable(widget, flag, TFLAG, target, adder, start, stopper, end, timer);
+}
+
+BAnimation::BAnimation(std::shared_ptr<__Widget> widg, const Uint8 B_color, const float timer)
+    : __ColorAnimation(widg, B_color, BLUE_CANIMATION), oldB(widget->B_color)
+{
+    target = &widget->B_color;
+    JDMAnimate::initVariable(widget, flag, TFLAG, target, adder, start, stopper, end, timer);
+}
+
+AAnimation::AAnimation(std::shared_ptr<__Widget> widg, const Uint8 A_color, const float timer)
+    : __ColorAnimation(widg, A_color, ALPHA_CANIMATION), oldA(widget->A_color)
+{
+    target = &widget->A_color;
+    JDMAnimate::initVariable(widget, flag, TFLAG, target, adder, start, stopper, end, timer);
 }

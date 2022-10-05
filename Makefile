@@ -38,12 +38,13 @@ I7 = -IC:/JDM/JDM/h_file/h_widget/canvas
 I8 = -IC:/JDM/JDM/h_file/h_widget/layout
 I9 = -IC:/JDM/JDM/h_file/h_widget/widget
 I10 = -IC:/JDM/JDM/h_file/h_widget/behavior
-I11 = -IC:/JDM/JDM/h_file/h_widget/animation
-I12 = -IC:/JDM/include
-I13 = -Iheader
-I14 = -Iheader/Entity
-I15 = -Iheader/Field
-ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12) $(I13) $(I14) $(I15)
+I11 = -IC:/JDM/JDM/h_file/h_widget/special
+I12 = -IC:/JDM/JDM/h_file/h_widget/animation
+I13 = -IC:/JDM/include
+I14 = -Iheader
+I15 = -Iheader/Entity
+I16 = -Iheader/Field
+ALL_I = $(I1) $(I2) $(I3) $(I4) $(I5) $(I6) $(I7) $(I8) $(I9) $(I10) $(I11) $(I12) $(I13) $(I14) $(I15) $(I16)
 
 L1 = -LC:/JDM/lib
 

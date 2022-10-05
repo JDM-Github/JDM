@@ -1,28 +1,50 @@
 #include "JDM.h"
+#include "JDMFps.h"
+#include "JDMFunction.h"
 
 namespace JDM
 {
+    // JDM Function
+    void stringAppend(std::string &storage, bool separator)
+    {
+        if (separator)
+            storage.erase(storage.size() - 1);
+    }
+
+    // Camera Controller.
+    // - Default to false
     bool control_camera = false;
+
+    // Log will be display. Also neccesary to use Show Memory.
+    // - Default to true
     bool enable_log = true;
+
+    // Log is Colorized.
+    // - Default to false
     bool enable_color = false;
+
+    // Show all Allocation.
+    // - Default to false
     bool show_memory = false;
+
+    // Main Camera X.
+    // ! DON'T CHANGE
     float camera_x = 0;
     float camera_y = 0;
+
+    // Elapse Time
     float elapseTime = 0.f;
+    // Current FPS
+    Uint8 FPS = 0;
+
+    // Main Mouse.
     int mouseX = 0;
     int mouseY = 0;
 
+    // Root. Dynamic Cast if Possible.
     Game *root = nullptr;
+    // Main Renderer.
     SDL_Renderer *renderer = nullptr;
-    int randint(const Uint64 &first, const Uint64 &second)
-    {
-        if (first >= second)
-            return second;
-        int result = (rand() % second) + first;
-        if (result > second)
-            result -= (result - second) + (rand() % (second - first) + 1);
-        return result;
-    }
 
     std::list<std::shared_ptr<__Animation>> Animation;
     void start_animation(std::shared_ptr<__Animation> anim) { Animation.emplace_back(anim); }

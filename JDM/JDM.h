@@ -26,6 +26,7 @@ namespace JDM
     extern bool show_memory;
 
     typedef __Vector2F Vector2F;
+
     typedef __Game Game;
     typedef __Widget Widget;
     typedef __Image Image;
@@ -45,22 +46,15 @@ namespace JDM
 
     extern __Game *root;
     extern SDL_Renderer *renderer;
-    extern float elapseTime;
+    // extern float elapseTime;
+    // extern Uint8 FPS;
     extern int mouseX;
     extern int mouseY;
-
-    template <typename T>
-    T negative(T &value) { return (value > 0) ? value * -1 : value; }
-    template <typename T>
-    T positive(T &value) { return (value < 0) ? value * -1 : value; }
-    template <typename T>
-    T changeSign(T &value) { return value * -1; }
 
     template <class T>
     using SP = std::shared_ptr<T>;
     template <class T, typename... Args>
     std::shared_ptr<T> MS(Args... arguments) { return std::make_shared<T>(arguments...); }
-    extern int randint(const Uint64 &first, const Uint64 &second);
 
     template <typename P>
     void PropertyBind(property<P> &prop, P &var, funcCallback func) { prop.push_back(std::make_pair(std::make_pair(var, std::ref(var)), func)); }

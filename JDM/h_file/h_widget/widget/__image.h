@@ -7,7 +7,6 @@ class __Image : public __WidgetColor
 {
 public:
     std::string sourcefile;
-
     double angle = 0;
     SDL_FPoint *point = nullptr;
     SDL_RendererFlip flip = SDL_FLIP_NONE;

@@ -1,4 +1,5 @@
 #include "JDM.h"
+#include "JDMFps.h"
 
 __Game::__Game(const std::string &title, const Uint16 width, const Uint16 height) : __WidgetColor(width, height)
 {
@@ -46,11 +47,12 @@ void __Game::run()
         {
             __tTime = 1000 / (__f_time2 - __f_time);
             JDM::elapseTime = 1.0 / __tTime;
+            JDM::FPS = __tTime;
             if (this->displayFPS)
                 if (JDM::enable_color)
                     Log(FG_CYAN, "FPS", FG_CLEAR, ": ", FG_GREEN, __tTime, FG_CLEAR);
                 else
-                    Log("FPS: ", __tTime);
+                    Log("FPS: ", JDM::FPS);
 
             this->manageProperty();
             this->__update();
